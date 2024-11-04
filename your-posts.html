@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Posts</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            height: 100vh;
+            margin: 0;
+            background-color: #fffbe6; /* Background color */
+            background-image: radial-gradient(#ffcc00 2px, transparent 2px),
+                              radial-gradient(#ffcc00 2px, transparent 2px);
+            background-position: 0 0, 20px 20px; /* Honeycomb pattern */
+            background-size: 40px 40px;
+            color: #333;
+            text-align: center; /* Center text */
+        }
+
+        /* Container for posts */
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px; /* Adjusted max-width for post content */
+            width: 90%;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5em;
+            color: #ffcc00; /* Same yellow color for consistency */
+            margin: 0 0 20px;
+        }
+
+        /* Individual Post Styling */
+        .post {
+            margin-bottom: 20px;
+            border: 1px solid #ffcc00; /* Yellow border for posts */
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff; /* White background for post content */
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #333; /* Button background color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555; /* Darker button color on hover */
+        }
+
+        /* Link Styling */
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcc00; /* Same button color */
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e6b800; /* Darker yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Posts</h1>
+        <div id="postsContainer"></div>
+        <p><a href="/create-post">Create a New Post</a></p>
+        <p><a href="/">Go back to Home</a></p>
+    </div>
+
+    <script>
+        // Example JavaScript to fetch and display posts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulated fetch call to get user's posts
+            const posts = [
+                { id: 1, title: "First Post", content: "This is the first post." },
+                { id: 2, title: "Second Post", content: "This is the second post." },
+            ];
+
+            const postsContainer = document.getElementById('postsContainer');
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post'); // Add class for individual post styling
+                postElement.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <button onclick="deletePost(${post.id})">Delete</button>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        });
+
+        function deletePost(postId) {
+            alert(`Post with ID ${postId} deleted!`);
+        }
+    </script>
+</body>
+</html>

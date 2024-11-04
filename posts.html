@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Make sure to link your CSS file -->
+    <style>
+        /* Add styles to match the look of the index.html */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fffbe6;
+            background-image: radial-gradient(#ffcc00 2px, transparent 2px),
+                              radial-gradient(#ffcc00 2px, transparent 2px);
+            background-position: 0 0, 20px 20px;
+            background-size: 40px 40px;
+            color: #333;
+        }
+
+        /* Centered Container */
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px; /* Wider for posts */
+            width: 90%;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 3em;
+            color: #ffcc00;
+            margin: 0 0 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Post Styling */
+        .post {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9; /* Light background for posts */
+        }
+
+        /* Link Styling */
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e6b800;
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blog Posts</h1>
+            <a href="/" id="backToDashboard">Back to Dashboard</a>
+        </header>
+
+        <main>
+            <div id="posts-container">
+                <!-- Dynamic posts will be injected here -->
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Your Website Name</p>
+        </footer>
+    </div>
+
+    <!-- Script to fetch and display posts -->
+    <script>
+        // Fetching posts from your server
+        fetch('/api/posts')  
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(posts => {
+                const postsContainer = document.getElementById('posts-container');
+                if (posts.length === 0) {
+                    postsContainer.innerHTML = '<p>No posts available.</p>';
+                } else {
+                    posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.classList.add('post');
+                        postElement.innerHTML = `
+                            <h2>${post.title}</h2>
+                            <p>${post.content}</p>
+                            <p><em>By ${post.author.username} on ${new Date(post.createdAt).toLocaleString()}</em></p>
+                            <hr>
+                        `;
+                        postsContainer.appendChild(postElement);
+                    });
+                }
+            })
+            .catch(error => {
+                document.getElementById('posts-container').innerHTML = `<p>Error fetching posts: ${error.message}</p>`;
+                console.error('Error fetching posts:', error);
+            });
+    </script>
+</body>
+</html>

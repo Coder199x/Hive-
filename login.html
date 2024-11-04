@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fffbe6; /* Background color */
+            background-image: radial-gradient(#ffcc00 2px, transparent 2px),
+                              radial-gradient(#ffcc00 2px, transparent 2px);
+            background-position: 0 0, 20px 20px;
+            background-size: 40px 40px; /* Honeycomb pattern effect */
+            color: #333;
+        }
+
+        /* Centered Container */
+        .container {
+            text-align: center;
+            background: #fff; /* White background for the container */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 3em;
+            color: #ffcc00; /* Same yellow color for consistency */
+            margin: 0 0 20px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between form elements */
+            margin-top: 10px;
+        }
+
+        label {
+            text-align: left; /* Align labels to the left */
+            font-size: 1.1em;
+            color: #333; /* Dark text for contrast */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 2px solid #ffcc00; /* Yellow border */
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1em;
+            color: #fff; /* White text for contrast */
+            background-color: #333; /* Dark button color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555; /* Lighter gray on hover */
+        }
+
+        /* Link Styling */
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcc00; /* Same button color */
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e6b800; /* Darker yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">        
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/">Register here</a></p> 
+    </div>
+</body>
+</html>

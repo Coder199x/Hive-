@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Blog Post</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            height: 100vh;
+            margin: 0;
+            background-color: #fffbe6; /* Background color */
+            background-image: radial-gradient(#ffcc00 2px, transparent 2px),
+                              radial-gradient(#ffcc00 2px, transparent 2px);
+            background-position: 0 0, 20px 20px; /* Honeycomb pattern */
+            background-size: 40px 40px;
+            color: #333;
+            text-align: center; /* Center text */
+        }
+
+        /* Container for form */
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px; /* Adjusted max-width for form content */
+            width: 90%;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5em;
+            color: #ffcc00; /* Same yellow color for consistency */
+            margin: 0 0 20px;
+        }
+
+        /* Label and Input Styling */
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px; /* Margin for labels */
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px;
+            margin-bottom: 20px; /* Space between fields */
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #333; /* Button background color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555; /* Darker button color on hover */
+        }
+
+        /* Link Styling */
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcc00; /* Same button color */
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e6b800; /* Darker yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Blog Post</h1>
+        <form action="/create-post" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+            
+            <button type="submit">Submit Post</button>
+        </form>
+        <p><a href="/dashboard">Go back to Dashboard</a></p>
+    </div>
+</body>
+</html>

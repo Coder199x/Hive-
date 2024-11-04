@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- Ensure the stylesheet link is correct -->
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <span id="username"></span>!</h1>
+        <div class="dashboard-links">
+            <p><a class="dashboard-button" href="/create-post">Create a new blog post</a></p>
+            <p><a class="dashboard-button" href="/your-posts" id="viewPostsLink">View Your Posts</a></p>
+        </div>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <script>
+        // Optionally, you can display the username dynamically
+        document.getElementById("username").innerText = "USER_NAME"; // Replace USER_NAME with actual username from session if available
+    </script>
+</body>
+</html>
